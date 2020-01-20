@@ -1,5 +1,5 @@
 import React from 'react'
-
+import axios from 'axios'
 import './CartCard.css'
 
 export default class CartCard extends React.Component {
@@ -40,14 +40,9 @@ export default class CartCard extends React.Component {
 
     onClickFunctionsUpdateQuantity = () => {
         // if (this.state.cart_quantity === 0) {}
-        fetch(`http://localhost:3001/cart_items/${this.props.item.id}`, {
-            method: "PATCH",
-            headers: {
-                "content-type":"application/json"
-            },
-            body: JSON.stringify({
+        axios.patch(`http://localhost:3001/cart_items/${this.props.item.id}`, {
                 cart_quantity: this.state.cart_quantity
-            })
+            
         })
     }
 

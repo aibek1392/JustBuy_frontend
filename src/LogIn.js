@@ -19,12 +19,13 @@ export default class LogIn extends React.Component {
 
   onSubmitFunctions = (event) => {
     this.logInSubmitted(event)
-    this.props.updateCart()
-    this.props.displayItems()
+    // this.props.updateCart()
+    // this.props.displayItems()
   }
 
 	onClickFunctionsSignUp = (event) => {
-		this.props.displaySignUp(event)
+    event.preventDefault()
+    this.props.history.push('/signup')
 	}
 
   logInSubmitted = (event) => {
@@ -41,22 +42,27 @@ export default class LogIn extends React.Component {
     })
     .then(response => response.json())
     .then(res_obj => {
+      console.log(res_obj.errors)
       if (res_obj.errors) {
-        this.props.displayLogin()
+        this.props.history.push('/')
         this.setState({
-          errors: res_obj.errors
+          errors: res_obj.errors,
+          username: "",
+          password: ""
+
         })
       } else {
         this.props.setToken(res_obj)
         this.props.getUser(res_obj)
+        this.props.history.push('/marketplace')
       }
     })
   }
 
   render(){
-    return <>
+    return <div className="main_wrapper">
       <ul>
-        { this.state.errors.map(error => <li>{ error }</li>) }
+        { this.state.errors.map(error => <h2 style={{color:"red", textAlign: "center"}}><strong>{ error }</strong></h2>) }
       </ul>
       {
         this.state.logIn
@@ -67,12 +73,14 @@ export default class LogIn extends React.Component {
             <label  htmlFor="log_in_username">Username</label>
             <input  id="log_in_username"
                     type="text"
+                    placeholder="Enter your username"
                     onChange={ this.onChange }
                     name="username"
                     value={ this.state.username } />
             <label  htmlFor="log_in_password">Password</label>
             <input  id="log_in_password"
                     type="password"
+                    placeholder="Enter your password"
                     onChange={ this.onChange }
                     name="password"
                     value={ this.state.password } />
@@ -83,6 +91,6 @@ export default class LogIn extends React.Component {
         :
 			""
       }
-    </>
+    </div>
   }
 }

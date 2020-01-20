@@ -21,10 +21,3 @@ form input {
   margin-bottom: 10px;
 }
 
-.main_wrapper {
-	width: 80%;
-	margin: 0 auto 0 auto;
-	padding: 5px;
-	background-color: #fffdf7;
-	box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25);
-}

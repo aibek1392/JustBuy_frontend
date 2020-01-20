@@ -19,11 +19,12 @@
 
 .item_card_img_frame {
 	margin: auto;
+
 }
 
 .item_card img {
-	width: 50px;
-	height: 50px;
+	width: 100px;
+	height: 100px;
     display: block;
 	padding: 2.5px;
 	margin: 1px auto 1px auto;

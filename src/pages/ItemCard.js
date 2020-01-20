@@ -1,6 +1,6 @@
 import React from 'react'
 
-import './ItemCard.css'
+import '../styling/ItemCard.css'
 
 export default class ItemCard extends React.Component {
 
@@ -18,7 +18,7 @@ export default class ItemCard extends React.Component {
 					{ item.name }
 				</h1>
 	            <div className="item_card_img_frame">
-	            <img src={ item.img_url } alt="test_img"/>
+	            <img  src={ item.img_url } alt="test_img"/>
 	            </div>
 				<div className="item_card_info">
 	            ${ item.price }
