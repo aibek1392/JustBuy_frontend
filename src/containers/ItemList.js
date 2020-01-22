@@ -1,7 +1,7 @@
 import React from 'react'
-import ItemCard from './pages/ItemCard'
+import ItemCard from '../pages/ItemCard'
 
-import './ItemList.css'
+import '../styling/ItemList.css'
 
 export default class ItemList extends React.Component {
 

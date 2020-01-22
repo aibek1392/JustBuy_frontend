@@ -2,69 +2,68 @@ import React from 'react'
 import { NavLink, Link } from 'react-router-dom'
 
 import '../styling/Header.css'
-import  HomeIcon  from './HomeIcon';
-
+import HomeIcon from './HomeIcon';
+import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 export default class Header extends React.Component {
 
-	// onClickFunctionsCart = () => {
-	// 	this.props.displayCart()
-	// }
-
-	// onClickFunctionsItems = () => {
-	// 	this.props.displayItems()
-	// }
+	state = {
+		cart_length: []
+	}
 
 	onClickFunctionsLogOut = () => {
 		this.props.logOut(this.props.token)
 	}
 
-	// onClickFunctionsHome = () => {
-	// 	this.props.displayLogin()
-	// }
+	componentWillMount() {
+		fetch(`http://localhost:3001/users/${this.props.userId}`)
+			.then(r => r.json())
+			.then(data => {
+				this.setState(prevState => ({
+					cart_length: data.cart_items.length
+				}))
+			})
+	}
+
+	componentDidUpdate(prevState, prevProps) {
+		if (prevState.cart_length !== this.state.cart_length) {
+			return this.state.cart_length
+		}
+	}
 
 	render() {
-
 		return (
-			<>
-					{!!this.props.token ?
-						
-
-							<Link exact to="/marketplace" >
-								<HomeIcon  style={{ fontSize: 40 }}/>
-							</Link>
-						
-						:
-						""
-					}
+			<React.Fragment>
+				{!!this.props.token ?
+					<Link exact to="/marketplace" >
+						<HomeIcon style={{ fontSize: 20 }} />
+					</Link>
+					:
+					""
+				}
 				<div className="header_right">
 					{!!this.props.token ?
 						<div className="header_greeting">
-							<h2> Hello , {this.props.getUser}</h2>
+							<h2 > Wellcome , {this.props.getUser}</h2>
 						</div>
 						:
 						""
 					}
 					{!!this.props.token ?
-						<Link to='/marketplace'><button className="header_button" onClick={this.onClickFunctionsItems}>Marketplace</button></Link>
-						:
-						""
-					}
-					{!!this.props.token ?
-							<Link to='/mycart'>
-						<button className="header_button" onClick={this.onClickFunctionsCart}>My Cart</button>
-						</Link>	
+						<Link to='/mycart'>
+							<button className="header_button" onClick={this.onClickFunctionsCart}><AddShoppingCartIcon style={{ fontSize: 32, color: "green" }} /><span style={{ color: "red", borderRadius: "10px" }}>{this.state.cart_length}</span></button>
+						</Link>
 						:
 						""
 					}
 					{!!this.props.token ?
 						<Link to='/'>
-							<button className="header_button" onClick={this.onClickFunctionsLogOut}>Log Out</button>
+							<button className="header_button" style={{ height: 42 }} onClick={this.onClickFunctionsLogOut}>Log Out</button>
 						</Link>
 						:
 						""
 					}
 				</div>
-			</>
+			</React.Fragment>
 		)
 	}
 }

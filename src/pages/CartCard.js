@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import './CartCard.css'
+import '../styling/CartCard.css'
 
 export default class CartCard extends React.Component {
 

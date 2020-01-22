@@ -24,12 +24,8 @@ export default function SvgIconsColor() {
 
   return (
     <div className={classes.root}>
-      {/* <HomeIcon />
-      <HomeIcon color="primary" />
-      <HomeIcon color="secondary" />
-      <HomeIcon color="action" />
-      <HomeIcon color="disabled" /> */}
       <HomeIcon style={{ color: green[500], fontSize: 60 }} />
     </div>
   );
 }
+

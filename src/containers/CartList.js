@@ -1,7 +1,7 @@
 import React from 'react'
-import CartCard from './CartCard'
-
-import './CartList.css'
+import CartCard from '../pages/CartCard'
+import {Link} from 'react-router-dom'
+import '../styling/CartList.css'
 
 export default class CartList extends React.Component {
 
@@ -16,11 +16,12 @@ export default class CartList extends React.Component {
                 return item.attributes.user.id === parseInt(this.props.user)
             })
             this.props.setUserIdToCart(arr)
+            this.props.length(this.props.cart.length)
         })
     }
 
     render(){
-        console.log(this.props.cart.length)
+        // console.log(this.props.cart.length)
         const distributeCartItems = this.props.cart.length >0? this.props.cart.map((item, index) =>
             <CartCard
                 key={index}
@@ -29,7 +30,8 @@ export default class CartList extends React.Component {
             />
         )
         :
-        (<h4 style={{"color":"red", "margin-top": "40px"}}>You don't have anything in your cart right now. Get to it!</h4>)
+        <Link to='/marketplace'>
+        <h2 style={{color:"black", marginTop: "50px", textAlign: "center"}}>You don't have anything in your cart right now!</h2></Link>
 
 
         return(

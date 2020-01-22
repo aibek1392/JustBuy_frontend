@@ -1,9 +1,9 @@
 import React from 'react'
 import Header from './pages/Header'
-import LogIn from './LogIn'
-import SignUp from './SignUp'
-import CartList from './CartList'
-import ItemsContainer from './ItemsContainer'
+import LogIn from './pages/LogIn'
+import SignUp from './pages/SignUp'
+import CartList from './containers/CartList'
+import ItemsContainer from './containers/ItemsContainer'
 import { withRouter, Route, Redirect, Switch } from 'react-router-dom'
 
 import './App.css'
@@ -15,6 +15,7 @@ class App extends React.Component {
     loggedInUserId: localStorage.userId,
     username: localStorage.username,
     cart: [],
+    lengthOfCart: [],
     display: 'Login',
   }
 
@@ -104,30 +105,14 @@ class App extends React.Component {
       )
   }
 
+  length = (length) => {
+    this.setState({
+      lengthOfCart: length
+    })
+  }
 
-  // displayCart = () => {
-  //   this.setState({
-  //     display: 'Cart'
-  //   })
-  // }
 
-  // displayItems = () => {
-  //   this.setState({
-  //     display: 'Items'
-  //   })
-  // }
 
-  // displayLogin = () => {
-  //   this.setState({
-  //     display: 'Login'
-  //   })
-  // }
-
-  // displaySignUp = (event) => {
-  //   this.setState({
-  //     display: 'SignUp'
-  //   })
-  // }
 
   logOut = () => {
     localStorage.clear()
@@ -139,30 +124,17 @@ class App extends React.Component {
   }
 
   render() {
-
-
-
-
-
-    // const showItemsContainer =
-    //   <ItemsContainer
-    //     token={this.state.token}
-    //     user={this.state.loggedInUserId}
-    //     display={this.state.display}
-    //     cart={this.state.cart}
-    //     addToCart={this.addToCart}
-    //     removeFromCart={this.removeFromCart}
-    //   />
-
     return (
       <React.Fragment>
         <div className="Header">
           <Header token={this.state.token}
+            lengthOfCart={this.state.lengthOfCart}
             getUser={this.state.username}
             displayLogin={this.displayLogin}
             displayCart={this.displayCart}
             displayItems={this.displayItems}
             logOut={this.logOut}
+            userId={this.state.loggedInUserId}
 
           />
         </div>
@@ -190,11 +162,14 @@ class App extends React.Component {
               addToCart={this.addToCart}
               removeFromCart={this.removeFromCart} />}
             />
-            <Route exact path={'/mycart'} render={(props) => <CartList {...props}
+            <Route exact path={'/mycart'} render={(props) => 
+              <CartList {...props}
               user={this.state.loggedInUserId}
               cart={this.state.cart}
+              length={this.length}
               setUserIdToCart={this.setUserIdToCart}
-              removeFromCart={this.removeFromCart} />}
+              removeFromCart={this.removeFromCart}
+              />}
             />
             {/* {
             {

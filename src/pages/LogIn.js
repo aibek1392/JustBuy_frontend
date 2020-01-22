@@ -1,6 +1,6 @@
 import React from 'react'
 
-import './Login.css'
+import '../styling/Login.css'
 
 export default class LogIn extends React.Component {
 
@@ -84,9 +84,9 @@ export default class LogIn extends React.Component {
                     onChange={ this.onChange }
                     name="password"
                     value={ this.state.password } />
-            <input className="login_button" type="submit" />
+            <input style={{backgroundColor: "red"}}className="login_button" type="submit" />
           </form>
-          <button className="login_button" onClick={ this.onClickFunctionsSignUp }>Sign Up</button>
+          <button style={{backgroundColor: "red"}} className="sign_button" onClick={ this.onClickFunctionsSignUp }>Sign Up</button>
         </div>
         :
 			""

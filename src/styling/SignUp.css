@@ -15,7 +15,7 @@
 .signup_main {
 	width: 100vw;
 	height: 100vh;
-	background-image: url('https://footage.framepool.com/shotimg/qf/255210986-electronic-banking-website-e-commerce-cube.jpghttps://footage.framepool.com/shotimg/qf/144625182-electronic-banking-website-e-commerce-cube.jpghttps://footage.framepool.com/shotimg/qf/292117944-electronic-banking-website-e-commerce-cube.jpghttps://footage.framepool.com/shotimg/qf/102644451-electronic-banking-website-e-commerce-cube.jpg');
+	background-image: url('https://i.pinimg.com/474x/b1/ed/0b/b1ed0bf996bfdf17dd0df69a30f04bec.jpg');
 	background-size: cover;
 	background-position:  center;
 	background-repeat: no-repeat;
@@ -53,11 +53,11 @@
 .signup_button:hover {
 	border: none;
 	color: #fff;
-	background: radial-gradient(rgba(158, 158, 158, 1), rgba(66, 66, 66, 1));
+	background: radial-gradient(rgb(248, 3, 3), rgb(248, 245, 245));
 	text-align: center;
 	text-decoration: none;
 	font-size: 1rem;
-	border-radius: 25px;
+	/* border-radius: 25px; */
 	  margin-left: auto;
 	  margin-right: auto;
 	  margin-top: 5px;

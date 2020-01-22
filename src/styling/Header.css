@@ -15,16 +15,15 @@
   position: relative;
   top: 0px;
   padding: 5px;
-
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  font-size: calc(10px + 2vmin);
+  height: 50%;
   color: white;
-	/* box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25); */
-	/* -moz-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25); */
-	/* -webkit-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25); */
+	box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25); 
+	-moz-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25);
+	 -webkit-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25);
 
 }
 
@@ -33,7 +32,11 @@
 }
 
 .header_right {
+	display: flex;
+	align-items: stretch;
+	margin-right: 10px;
 	flex-direction: row;
+	justify-content: space-around;
 }
 
 .Header a {
@@ -57,7 +60,7 @@
 
 .header_greeting {
 	font-size: 10pt;
-	
+	margin-left: -30%;
 
 }
 
@@ -78,12 +81,12 @@
 
 .header_button:hover {
 	border: none;
-	color: #fff;
-	background: radial-gradient(rgba(158, 158, 158, 1), rgba(66, 66, 66, 1));
+	color: rgb(247, 242, 242);
+	background: radial-gradient(rgb(7, 6, 6), rgb(233, 4, 4));
 	text-align: center;
 	text-decoration: none;
 	font-size: 1rem;
-	border-radius: 25px;
+	/* border-radius: 25px; */
 	margin-left:0.25rem; margin-right:0.25rem; margin-top:0.25rem; margin-bottom:0.25rem;
 	padding-left:0.25rem; padding-right:0.25rem; padding-top:0.25rem; padding-bottom:0.25rem;
 
@@ -92,7 +95,7 @@
 	transition-timing-function: ease-in-out;
 	-webkit-transition-timing-function:ease-in-out;
 	-moz-transition-timing-function:ease-in-out;
-	box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25);
+	box-shadow: 0 0 5px 0 rgba(241, 239, 239, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25);
 	-moz-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25);
 	-webkit-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25);
 
