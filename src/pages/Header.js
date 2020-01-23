@@ -6,33 +6,66 @@ import HomeIcon from './HomeIcon';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 export default class Header extends React.Component {
 
-	state = {
-		cart_length: []
-	}
+	// state = {
+	// 	cart_length: 0
+	// }
+
+	// setLength = () => {
+	// 	this.setState({
+	// 		cart_length: this.props.lengthOfCart
+	// 	})
+	// }
+	
 
 	onClickFunctionsLogOut = () => {
 		this.props.logOut(this.props.token)
 	}
 
-	componentWillMount() {
-		fetch(`http://localhost:3001/users/${this.props.userId}`)
-			.then(r => r.json())
-			.then(data => {
-				this.setState(prevState => ({
-					cart_length: data.cart_items.length
-				}))
-			})
-	}
+	// componentDidMount(){
 
-	componentDidUpdate(prevState, prevProps) {
-		if (prevState.cart_length !== this.state.cart_length) {
-			return this.state.cart_length
-		}
-	}
+	// }
+
+
+
+
+	// setQuant =() => {
+	// 	fetch(`http://localhost:3001/users/${this.props.userId}`)
+	// 		.then(r => r.json())
+	// 		.then(data => {
+	// 			// console.log(data)
+	// 			this.props.setLength(data.cart_items.length)
+	// 			// console.log(data.cart_items.)
+	// 			this.setState(prevState => ({
+	// 				cart_length:  data.cart_items.length
+	// 			}))
+	// 		})
+	// }
+
+	// componentDidUpdate(prevState, prevProps) {
+	// 	if (prevState.cart_length !== this.state.cart_length) {
+	// 		return true
+	// 	}
+	// }
 
 	render() {
-		return (
+		console.log(this.props.lengthOfCart)
+		// console.log(this.state.cart_length)
+		// console.log("from header", this.state.cart_length[0].map(data => {
+		// 	data.length
+		// }))
+		// const lengt = this.state.cart_length.find(data => {
+		// 	return <span>{data.length}</span>
+		// })
+		// console.log(this.state.cart_length)
+
+		return ( 
+
 			<React.Fragment>
+				{/* {this.props.lengthOfCart > this.state.cart_length ? 
+				
+				this.setLength()
+				: 
+				null } */}
 				{!!this.props.token ?
 					<Link exact to="/marketplace" >
 						<HomeIcon style={{ fontSize: 20 }} />
@@ -48,9 +81,12 @@ export default class Header extends React.Component {
 						:
 						""
 					}
-					{!!this.props.token ?
+					{!!this.props.token || !!this.props.setLength ? 
 						<Link to='/mycart'>
-							<button className="header_button" onClick={this.onClickFunctionsCart}><AddShoppingCartIcon style={{ fontSize: 32, color: "green" }} /><span style={{ color: "red", borderRadius: "10px" }}>{this.state.cart_length}</span></button>
+							<button className="header_button" 
+							onClick={this.onClickFunctionsCart}><AddShoppingCartIcon
+							style={{ fontSize: 32, color: "green" }} /><span 
+					style={{ color: "red", borderRadius: "10px" }}>{this.props.setLength}</span></button>
 						</Link>
 						:
 						""

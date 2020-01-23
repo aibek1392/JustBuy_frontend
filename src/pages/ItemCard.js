@@ -5,8 +5,13 @@ import '../styling/ItemCard.css'
 export default class ItemCard extends React.Component {
 
     onClickFunctionsAdd = () => {
-        this.props.addToCart(this.props.item.id)
+		// localStorage.cart_length + 1
+		console.log(localStorage)
+        this.props.addToCart(this.props.item)
     }
+
+
+
 
     render(){
 

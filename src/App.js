@@ -15,7 +15,7 @@ class App extends React.Component {
     loggedInUserId: localStorage.userId,
     username: localStorage.username,
     cart: [],
-    lengthOfCart: [],
+    cart_length: localStorage.cart_length,
     display: 'Login',
   }
 
@@ -33,6 +33,24 @@ class App extends React.Component {
       username: username
     })
   }
+
+  setLength = ( data) => {
+    // console.log(data)
+    localStorage.cart_length = data
+    // if (this.state.cart.length > 0) {
+      this.setState({
+        cart_length: data
+      })
+      
+    // } 
+  }
+
+  // componentDidUpdate(prevState, prevProps) {
+  //   	if (this.state.cart_length !== this.state.cart.length) {
+  //   		return true
+  //   	}
+  //   }
+
   // get userName
   getUser = (user) => {
     console.log(user)
@@ -41,7 +59,35 @@ class App extends React.Component {
     })
   }
 
+
+  
+
+
+//   componentDidMount(){
+//     fetch('http://localhost:3001/cart_items')
+//     .then(r => r.json())
+//     .then(res => {
+        
+//         const arr = res.data.filter(item => {
+//             // console.log(item.attributes.user.id)
+//             return item.attributes.user.id === parseInt(this.state.loggedInUserId)
+//         })
+//         // this.props.setUserIdToCart(this.state.cart.length)
+//         // this.props.length(this.props.cart.length)
+//         this.setState({
+//             cart: arr
+//         })
+//     })
+// }
+
+
+
   addToCart = (item) => {
+    // localStorage.cart_item += 1
+    // this.setState({
+    //   cart: [...this.state.cart, item]
+    // })
+    // console.log(item)
     // const matched = this.state.cart.find(match => match.attributes.item.id === item)
     //   if (!matched) {
       fetch("http://localhost:3001/cart_items", {
@@ -51,38 +97,67 @@ class App extends React.Component {
         method: "POST",
         body: JSON.stringify({
           user_id: this.state.loggedInUserId,
-          item_id: item,
+          item_id: item.id,
           cart_quantity: 1
         })
       })
         .then(response => response.json())
         .then(res_obj => {
-          // this.setState({
-          //   cart: [...this.state.cart, res_obj]
-          // })
+          
+          // this.setLent(res_obj)
+          this.setState({
+            cart_length: parseInt(this.state.cart_length) + 1
+          })
         }
         )
     // } else {
     //   alert("fuck")
     // }
   }
+  componentDidMount() {
+		fetch(`http://localhost:3001/users/${this.state.loggedInUserId}`)
+			.then(r => r.json())
+			.then(data => {
+        // console.log(data.cart_items.length)
+        this.setLength(data.cart_items.length)
+				// console.log("fafa",prevState)
+				// this.setState(prevState => ({ 
+				// 	cart_length: [prevState, data.cart_items.length]
+        // })
+        // )
+      })
+      // console.log(prevState)
+	}
+
+	// componentDidUpdate(prevState, prevProps) {
+  //   // console.log(prevState)
+	// 	if (prevState.length !== this.state.cart_length) {
+	// 		return true
+	// 	}
+	// }
+
+
+
 
   setUserIdToCart = (arr) => {
-    // console.log(arr.map(arr))
-    // const arrR =  arr.map( www => {
-    //   return   www.attributes.item.id
-    // })
-    // const matched = this.state.cart.map(match =>{
-    //   return match.attributes.item.id
-    // })
-    // console.log(matched)
-  // const arrId = arr.flter(item.attributes.item.id)
-    // if(matched.includes){
-      // if(this.state.cart.includes(arr)){
+    // console.log("app",arr)
+// }
+  //   console.log(arr)
+  //   // console.log(arr.map(arr))
+  //   // const arrR =  arr.map( www => {
+  //   //   return   www.attributes.item.id
+  //   // })
+  //   // const matched = this.state.cart.map(match =>{
+  //   //   return match.attributes.item.id
+  //   // })
+  //   // console.log(matched)
+  // // const arrId = arr.flter(item.attributes.item.id)
+  //   // if(matched.includes){
+  //     // if(this.state.cart.includes(arr)){
     this.setState({
       cart: arr
     })
-  // }
+  // // }
   }
   // updateCart = () => {
   //   fetch("http://localhost:3001/cart_items")
@@ -92,26 +167,32 @@ class App extends React.Component {
   //         cart: res_obj.data.filter(item => item.attributes.user.id === this.state.loggedInUserId)
   //       })
   //     })
+  // }\
+
+  // componentDidMount(){
+  //   fetch(`http://localhost:3001/cart_items/${cart_item.item.id}`)
+    
   // }
 
   removeFromCart = (cart_item) => {
+    console.log(cart_item)
     fetch(`http://localhost:3001/cart_items/${cart_item.item.id}`, {
       method: "DELETE"
     })
       .then(
-        this.setState({
-          cart: this.state.cart.filter(item => item.id !== cart_item.item.id)
-        })
+        this.setState(prevState =>  ({
+          cart: this.state.cart.filter(item =>  item.id !== cart_item.item.id),
+          cart_length: parseInt(this.state.cart_length) - 1 
+        }))
       )
   }
-
-  length = (length) => {
-    this.setState({
-      lengthOfCart: length
-    })
-  }
+  // this.setState(prevState => ({
+  //   				cart_length: [...this.state.cart_length, data.cart_items.length]
+  //   			}))
 
 
+
+  
 
 
   logOut = () => {
@@ -119,19 +200,24 @@ class App extends React.Component {
     this.setState({
       loggedInUserId: null,
       token: null,
-      cart: []
+      cart: [],
+      cart_length: localStorage.cart_length
+
     })
   }
 
   render() {
+    console.log(this.state.cart_length)
     return (
       <React.Fragment>
+        {/* {this.state.cart_length !== this.state.cart.length ? this.setLent() : null} */}
         <div className="Header">
           <Header token={this.state.token}
-            lengthOfCart={this.state.lengthOfCart}
+            cart={this.state.cart}
+            setLength={this.state.cart_length}
             getUser={this.state.username}
             displayLogin={this.displayLogin}
-            displayCart={this.displayCart}
+            // displayCart={this.displayCart}
             displayItems={this.displayItems}
             logOut={this.logOut}
             userId={this.state.loggedInUserId}

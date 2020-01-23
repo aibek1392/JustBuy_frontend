@@ -42,7 +42,7 @@ export default class LogIn extends React.Component {
     })
     .then(response => response.json())
     .then(res_obj => {
-      console.log(res_obj.errors)
+      console.log(res_obj)
       if (res_obj.errors) {
         this.props.history.push('/')
         this.setState({
@@ -52,6 +52,7 @@ export default class LogIn extends React.Component {
 
         })
       } else {
+        console.log(res_obj)
         this.props.setToken(res_obj)
         this.props.getUser(res_obj)
         this.props.history.push('/marketplace')
