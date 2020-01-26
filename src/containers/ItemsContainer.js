@@ -14,11 +14,13 @@ export default class ItemsContainer extends React.Component {
   componentDidMount() {
     fetch("http://localhost:3001/items")
       .then(res => res.json())
-      .then(res_obj =>
+      .then(res_obj => {
+        const slicedData = res_obj.data.sort((a, b) => b.id - a.id);
         this.setState({
-          items: res_obj.data,
-          showItems: res_obj.data
+          items: slicedData
+          // showItems: res_obj.data
         })
+      }
       )
   }
 

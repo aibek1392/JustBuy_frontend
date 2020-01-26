@@ -6,15 +6,15 @@ import HomeIcon from './HomeIcon';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 export default class Header extends React.Component {
 
-	// state = {
-	// 	cart_length: 0
-	// }
+	state = {
+		cart_length: false
+	}
 
-	// setLength = () => {
-	// 	this.setState({
-	// 		cart_length: this.props.lengthOfCart
-	// 	})
-	// }
+	setLength = () => {
+		this.setState({
+			cart_length: this.props.setLength
+		})
+	}
 	
 
 	onClickFunctionsLogOut = () => {
@@ -42,13 +42,13 @@ export default class Header extends React.Component {
 	// }
 
 	// componentDidUpdate(prevState, prevProps) {
-	// 	if (prevState.cart_length !== this.state.cart_length) {
+	// 	if (this.cart_length !== this.state.cart_length) {
 	// 		return true
 	// 	}
 	// }
 
 	render() {
-		console.log(this.props.lengthOfCart)
+		console.log(this.state.lengthOfCart)
 		// console.log(this.state.cart_length)
 		// console.log("from header", this.state.cart_length[0].map(data => {
 		// 	data.length
@@ -66,13 +66,21 @@ export default class Header extends React.Component {
 				this.setLength()
 				: 
 				null } */}
+				{/* {!this.state.cart_length ? this.setLength() : null} */}
+				
 				{!!this.props.token ?
-					<Link exact to="/marketplace" >
-						<HomeIcon style={{ fontSize: 20 }} />
+					<Link  exact to="/marketplace" >
+						<div className="header_icon">
+						<h1><span className="Just">J</span>ustBuy</h1>
+						</div>
 					</Link>
 					:
 					""
 				}
+
+
+
+
 				<div className="header_right">
 					{!!this.props.token ?
 						<div className="header_greeting">
@@ -81,12 +89,15 @@ export default class Header extends React.Component {
 						:
 						""
 					}
-					{!!this.props.token || !!this.props.setLength ? 
+
+					
+					
+					{!!this.props.token || !!this.state.setLength ? 
 						<Link to='/mycart'>
 							<button className="header_button" 
 							onClick={this.onClickFunctionsCart}><AddShoppingCartIcon
 							style={{ fontSize: 32, color: "green" }} /><span 
-					style={{ color: "red", borderRadius: "10px" }}>{this.props.setLength}</span></button>
+					style={{ color: "red", borderRadius: "10px" }}>{this.props.setLength }</span></button>
 						</Link>
 						:
 						""

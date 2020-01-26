@@ -74,3 +74,14 @@ border: none;
 	-webkit-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25);
 
 }
+
+.add-item {
+	background-color: rgb(251, 252, 253);
+	width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    background-position:  center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    text-align: center;
+}

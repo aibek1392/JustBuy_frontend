@@ -1,5 +1,7 @@
 import React from 'react'
 import ItemCard from '../pages/ItemCard'
+import { Link } from 'react-router-dom'
+import {  Button } from 'semantic-ui-react'
 
 import '../styling/ItemList.css'
 
@@ -52,6 +54,16 @@ export default class ItemList extends React.Component {
 							{filteredCategories}
 						</select>
 					</label>
+					<Link to="create_item">
+						<Button
+						style={{ fontSize: 9, marginLeft: "20px"}} 
+							color='red'
+							content='Create New Item'
+							icon='add'
+
+							labelPosition='left'
+						/>
+					</Link>
 				</div>
 				<div className="item_list">
 					{distributeItems}

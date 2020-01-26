@@ -5,7 +5,7 @@ import SignUp from './pages/SignUp'
 import CartList from './containers/CartList'
 import ItemsContainer from './containers/ItemsContainer'
 import { withRouter, Route, Redirect, Switch } from 'react-router-dom'
-
+import CreatItem from './pages/CreatItem'
 import './App.css'
 
 class App extends React.Component {
@@ -115,7 +115,7 @@ class App extends React.Component {
     // }
   }
   componentDidMount() {
-		fetch(`http://localhost:3001/users/${this.state.loggedInUserId}`)
+	  return	fetch(`http://localhost:3001/users/${this.state.loggedInUserId}`)
 			.then(r => r.json())
 			.then(data => {
         // console.log(data.cart_items.length)
@@ -159,6 +159,24 @@ class App extends React.Component {
     })
   // // }
   }
+
+  addItem = (newItem) => {
+    // console.log("APP JS", newItem)
+     return fetch("http://localhost:3001/items", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json"
+      },
+      body: JSON.stringify({
+        ...newItem
+      })
+    })
+    .then(r => r.json())
+    .then( r => {
+      console.log("APP JS",r)
+    })
+  }
+  
   // updateCart = () => {
   //   fetch("http://localhost:3001/cart_items")
   //     .then(response => response.json())
@@ -201,7 +219,7 @@ class App extends React.Component {
       loggedInUserId: null,
       token: null,
       cart: [],
-      cart_length: localStorage.cart_length
+      cart_length: null
 
     })
   }
@@ -226,6 +244,11 @@ class App extends React.Component {
         </div>
         <Switch>
           <div >
+          <Route exact path={'/create_item'} component={(props) =>
+              <CreatItem {...props}
+              addItem={this.addItem}
+              />}
+            />
             <Route exact path={'/'} render={(props) =>
               <LogIn {...props}
                 setToken={this.setToken}

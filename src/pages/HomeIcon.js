@@ -24,7 +24,7 @@ export default function SvgIconsColor() {
 
   return (
     <div className={classes.root}>
-      <HomeIcon style={{ color: green[500], fontSize: 60 }} />
+      <HomeIcon style={{ color: "white", fontSize: 60 }} />
     </div>
   );
 }

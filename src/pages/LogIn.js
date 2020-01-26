@@ -69,7 +69,7 @@ export default class LogIn extends React.Component {
         this.state.logIn
         ?
         <div className="login_wrapper">
-          <h2>Log In</h2>
+          <h2>Login</h2>
           <form onSubmit={ this.onSubmitFunctions }>
             <label  htmlFor="log_in_username">Username</label>
             <input  id="log_in_username"
