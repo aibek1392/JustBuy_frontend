@@ -7,7 +7,7 @@ import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 export default class Header extends React.Component {
 
 	state = {
-		cart_length: false
+		cart_length: localStorage.cart_length
 	}
 
 	setLength = () => {
@@ -24,6 +24,36 @@ export default class Header extends React.Component {
 	// componentDidMount(){
 
 	// }
+
+
+	componentDidMount() {
+		return	fetch(`http://localhost:3001/users/${this.props.userId}`)
+			  .then(r => r.json())
+			  .then(data => {
+		//   console.log(data.cart_items.length)
+		  this.props.setLength(data.cart_items.length)
+				  // console.log("fafa",prevState)
+				  // this.setState(prevState => ({ 
+				  // 	cart_length: [prevState, data.cart_items.length]
+		  // })
+		  // )
+		})
+
+
+		
+		// console.log(prevState)
+	  }
+
+	  setLength = ( data) => {
+		// console.log(data)
+		localStorage.cart_length = data
+		// if (this.state.cart.length > 0) {
+		  this.setState({
+			cart_length: data
+		  })
+		  
+		// } 
+	  }
 
 
 
@@ -48,16 +78,6 @@ export default class Header extends React.Component {
 	// }
 
 	render() {
-		console.log(this.state.lengthOfCart)
-		// console.log(this.state.cart_length)
-		// console.log("from header", this.state.cart_length[0].map(data => {
-		// 	data.length
-		// }))
-		// const lengt = this.state.cart_length.find(data => {
-		// 	return <span>{data.length}</span>
-		// })
-		// console.log(this.state.cart_length)
-
 		return ( 
 
 			<React.Fragment>
@@ -97,7 +117,7 @@ export default class Header extends React.Component {
 							<button className="header_button" 
 							onClick={this.onClickFunctionsCart}><AddShoppingCartIcon
 							style={{ fontSize: 32, color: "green" }} /><span 
-					style={{ color: "red", borderRadius: "10px" }}>{this.props.setLength }</span></button>
+					style={{ color: "red", borderRadius: "10px" }}>{this.props.cartLength }</span></button>
 						</Link>
 						:
 						""

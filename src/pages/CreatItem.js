@@ -2,8 +2,10 @@ import React, { Component } from 'react'
 import '../styling/ItemCard.css'
 // import '../Styling/Header.css'
 // import '../App.css'
+ 
+// import { Redirect} from 'react-router-dom'
 // import { Button, Form, InputGroup, FormControl, Col } from 'react-bootstrap'
-import { Input, Segment, Form, Button } from 'semantic-ui-react'
+import { Input, Segment, Form } from 'semantic-ui-react'
 export default class CreatItem extends Component {
 
 
@@ -13,7 +15,8 @@ export default class CreatItem extends Component {
         price: '',
         description: '',
         category: '',
-        quantity: ''
+        quantity: '',
+        information: ''
     }
 
 
@@ -29,19 +32,19 @@ export default class CreatItem extends Component {
 
     onSubmit = (e) => {
         e.preventDefault()
-        this.props.addItem(this.state)
-        //     .then((res) => res.json())
-        //     .then((newItem) => {
-
+        // let arrayItem = []
+        // if(!arrayItem.includes(this.state)){
+        //     arrayItem.push(this.state)
+            this.props.addItem(this.state)
+        // }
         this.props.history.push('/marketplace')
-        // })
+       
     }
 
 
 
 
     render() {
-        // console.log(this.props.history)
         return (
             <div className="add-item">
                 <center>
@@ -50,7 +53,7 @@ export default class CreatItem extends Component {
                             <button
                                 onClick={(e) => this.goBack(e)}
 
-                                className="ui teal inverted button"
+                                className="ui red inverted button"
                                 style={{
                                     width: '29%', color: 'black',
                                     marginBottom: "2%"
@@ -61,7 +64,7 @@ export default class CreatItem extends Component {
 
                             <Form s onSubmit={this.onSubmit}  >
                                 {/* <h2 style={{ color: "white", fontWeight: "bold" }}>Let's add an Item </h2> */}
-                                <h2  style={{marginLeft: "24%", backgroundColor:"#F5F5F5",width:'50%', fontWeight: "bold" }}class="ui block header">Let's add an Item </h2>
+                                <h2 style={{ marginLeft: "24%", backgroundColor: "#F5F5F5", width: '50%', fontWeight: "bold" }} className="ui block header">Let's add an Item. </h2>
 
                                 <Form.Group widths='equal' style={{ display: "flex", flexDirection: "column" }}>
                                     <Input
@@ -90,7 +93,7 @@ export default class CreatItem extends Component {
                                             color: 'teal',
                                             labelPosition: 'left',
                                             margin: "10px",
-                                            icon: ' circle',
+                                            icon: 'circle',
                                             content: 'name',
                                         }}
                                         actionPosition='left'
@@ -98,6 +101,25 @@ export default class CreatItem extends Component {
                                     />
 
                                     <br />
+                                    <Input
+                                        required
+                                        placeholder="..Enter your contact information"
+                                        value={this.state.information}
+                                        onChange={this.onChange}
+                                        name="information"
+                                        action={{
+                                            color: 'teal',
+                                            labelPosition: 'left',
+                                            margin: "10px",
+                                            icon: 'address card outline',
+                                            content: 'contact info',
+                                        }}
+                                        actionPosition='left'
+                                        placeholder='phone number, email address'
+                                    />
+
+                                    <br />
+
                                     <Input
                                         required
                                         value={this.state.price}
@@ -124,11 +146,11 @@ export default class CreatItem extends Component {
                                             color: 'teal',
                                             labelPosition: 'left',
                                             margin: "10px",
-                                            icon: ' address card outline',
-                                            content: 'contact info',
+                                            icon: ' infor circle',
+                                            content: 'details',
                                         }}
                                         actionPosition='left'
-                                        placeholder='...phone number, email etc.'
+                                        placeholder='...more details about this item'
                                     />
 
                                     <br />
@@ -149,7 +171,7 @@ export default class CreatItem extends Component {
                                     />
 
                                     <br />
-                                    <Input
+                                    {/* <Input
                                         required
                                         value={this.state.quantity}
                                         onChange={this.onChange}
@@ -158,14 +180,14 @@ export default class CreatItem extends Component {
                                             color: 'teal',
                                             labelPosition: 'left',
                                             margin: "10px",
-                                            icon: ' braille',
+                                            icon: 'braille',
                                             content: 'quantity',
                                         }}
                                         actionPosition='left'
                                         placeholder='...enter quantity'
                                     />
 
-                                    <br />
+                                    <br /> */}
                                     {/* <Button
                                         style={{
                                             width: '20%', color: 'black',
@@ -177,16 +199,16 @@ export default class CreatItem extends Component {
                                         type="submit">
                                         Submit
                                      </Button> */}
-                                    <div class="ui buttons"  style={{width: "1%", marginLeft: "35%"}}>
-                                        <button class="ui button"
-                                        
-                                        onClick={(e) => this.goBack(e)}
+                                    <div className="ui buttons" style={{ width: "1%", marginLeft: "35%" }}>
+                                        <button className="ui button"
+
+                                            onClick={(e) => this.goBack(e)}
                                         >Cancel</button>
-                                        <div class="or"></div>
-                                        <button class="ui positive button"
-                                        value="Submit"
-                                        type="submit"
-                                        >Save</button>
+                                        <div className="or"></div>
+                                        <button className="ui positive button"
+                                            value="Submit"
+                                            type="submit"
+                                        >Submit</button> 
                                     </div>
                                 </Form.Group>
                             </Form>

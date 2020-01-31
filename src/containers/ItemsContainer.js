@@ -7,7 +7,6 @@ export default class ItemsContainer extends React.Component {
   state = {
     items: [],
     showItems: [],
-    // display: null,
     showFilteredItems: "All"
   }
 
@@ -15,10 +14,11 @@ export default class ItemsContainer extends React.Component {
     fetch("http://localhost:3001/items")
       .then(res => res.json())
       .then(res_obj => {
-        const slicedData = res_obj.data.sort((a, b) => b.id - a.id);
+        console.log(res_obj)
+        const slicedData = res_obj.sort((a, b) => b.id - a.id);
         this.setState({
-          items: slicedData
-          // showItems: res_obj.data
+          items: slicedData,
+          showItems: slicedData
         })
       }
       )
@@ -29,26 +29,17 @@ export default class ItemsContainer extends React.Component {
       showFilteredItems: term
     })
   }
-  
+
 
   whichItemsToRender = () => {
     if (this.state.showFilteredItems === "All") {
-        return this.state.items
+      return this.state.items
     } else {
-        return this.state.items.filter(item => item.attributes.category === this.state.showFilteredItems)
-      
+      return this.state.items.filter(item => item.category === this.state.showFilteredItems)
+
     }
 
   }
-
-//   whichItemsToRender = () => {
-//     if (this.state.showFilteredEvents === "All") {
-//         return this.state.events
-//     } else {
-//         return this.state.events.filter(event => event.category === this.state.showFilteredEvents)
-//     }
-
-// }
 
   handleChange = (event) => {
     this.setState({
@@ -57,32 +48,16 @@ export default class ItemsContainer extends React.Component {
   }
 
   render() {
-
-    
-    // const showCart =
-    //   <CartList
-    //     user={this.props.user}
-    //     cart={this.props.cart}
-    //     removeFromCart={this.props.removeFromCart}
-    //   />
-
-    // const showItems =
-    //   <ItemList
-    //     terms={this.state.showFilteredItems}
-    //     filterItems={this.filterItems}
-    //     items={this.whichItemsToRender()}
-    //     itemsForFilter={this.state.showItems}
-    //     addToCart={this.props.addToCart}
-    //   />
     return (
       <div>
-         <ItemList
-        terms={this.state.showFilteredItems}
-        filterItems={this.filterItems}
-        items={this.whichItemsToRender()}
-        itemsForFilter={this.state.showItems}
-        addToCart={this.props.addToCart}
-      />
+        <ItemList
+          terms={this.state.showFilteredItems}
+          filterItems={this.filterItems}
+          items={this.whichItemsToRender()}
+          itemsForFilter={this.state.showItems}
+          addToCart={this.props.addToCart}
+          showDetails={this.props.showDetails}
+        />
         {/* {(this.props.display === "Cart") ? (showCart) : (showItems)} */}
       </div>
     )

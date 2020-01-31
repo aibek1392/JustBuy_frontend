@@ -1,0 +1,42 @@
+.right_div_container {
+   margin-top: 5%;
+   margin-left: 5%;  
+    /* padding-left: 10%; */
+}
+
+
+
+.left_div_container {
+     /* margin-top: -40%; */
+    margin-left: 10%;
+    /* padding-left: 10%;  */
+    width: 50%;
+}
+/* textAlign: "Center", fontFamily: "Courier New, Monospace", fontWeight: "100", color: "#343a40"  */
+.single_card {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    justify-content: center;
+    text-align: center;
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    background-position:  center;
+    background-repeat: repeat;
+    overflow: hidden;
+    text-align: center;
+    
+}
+
+
+.image-card {
+    box-shadow: -2rem 0 3rem rgb(18, 18, 19);
+    width: 65vh;
+    height: 60%;
+    position: relative;
+    /* margin-right: 60%; */
+    padding: 10px; 
+    border-radius: 10%;
+    margin-top: 15px;
+  }

@@ -22,13 +22,13 @@ export default class ItemList extends React.Component {
 	// }
 
 	render() {
-
-		const searchedItem = this.props.items.filter(item => item.attributes.name.toLowerCase().includes(this.state.searchTerm.toLowerCase()))
+		console.log(this.props.items)
+		const searchedItem = this.props.items.filter(item =>  	item.name.toLowerCase().includes(this.state.searchTerm.toLowerCase()))
 		const arrayOfCategories = []
-		const filteredCategories = this.props.itemsForFilter.map(item => {
-			if (!arrayOfCategories.includes(item.attributes.category)) {
-				arrayOfCategories.push(item.attributes.category)
-				return <option key={item.id}>{item.attributes.category}</option>
+		const filteredCategories = this.props.itemsForFilter.map(item => { 
+			if (!arrayOfCategories.includes(item.category)) {
+				arrayOfCategories.push(item.category)
+				return <option key={item.id}>{item.category}</option>
 			}
 		})
 
@@ -37,6 +37,7 @@ export default class ItemList extends React.Component {
 				key={item.id}
 				item={item}
 				addToCart={this.props.addToCart}
+				showDetails={this.props.showDetails}
 			/>
 		)
 
