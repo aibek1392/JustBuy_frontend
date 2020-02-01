@@ -26,6 +26,7 @@ export default class CartList extends React.Component {
                 item={item}
                 removeFromCart={this.props.removeFromCart}
                 user={this.props.user}
+                showDetails={this.props.showDetails}
             />
             )
             :

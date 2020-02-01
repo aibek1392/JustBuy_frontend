@@ -216,6 +216,7 @@ class App extends React.Component {
                 user={this.state.loggedInUserId}
                 cart={this.state.cart}
                 length={this.length}
+                showDetails={this.showDetails}
                 setUserIdToCart={this.setUserIdToCart}
                 removeFromCart={this.removeFromCart}
               />}

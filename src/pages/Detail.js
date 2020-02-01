@@ -53,7 +53,7 @@ class Detail extends React.Component {
             <div className="single_card">
                 <React.Fragment>
                     <div className="left_div_container">
-        <h2 style={{ paddingTop:"25px",marginLeft: "23%", backgroundColor: "#F5F5F5", width: '40%', fontWeight: "bold" }} className="ui block center header">{item.name}</h2>
+        <h2 style={{ paddingTop:"25px",marginLeft: "13%", backgroundColor: "#F5F5F5", width: '40%', fontWeight: "bold" }} className="ui block center header">{item.name}</h2>
                         <img className="image-card " width="400px" src={item.img_url} />
                     </div>
                     <div className="right_div_container" >

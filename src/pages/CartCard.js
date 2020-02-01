@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import '../styling/CartCard.css'
-
+import { Link } from 'react-router-dom'
 export default class CartCard extends React.Component {
 
     state = {
@@ -53,11 +53,12 @@ export default class CartCard extends React.Component {
     render() {
         const cartItem = this.props.item.attributes.item
         return (
-            <div className="cart_card">
-                <div className="item_name_picture_price">
+            <div  className="cart_card">
+                <div className="item_name_picture_price" onClick={() => this.props.showDetails(this.props.item.attributes.item)}>
                     {cartItem.name}
-                    <br />
-                    <img src={cartItem.img_url} alt="test_img" />
+                    <br /><Link to='/detail'>
+                    <img  src={cartItem.img_url} alt="test_img" />
+                            </Link>
                 </div>
                 <div className="item_price">
                     ${cartItem.price}/each
