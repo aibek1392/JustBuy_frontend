@@ -1,5 +1,4 @@
 import React from 'react'
-
 import '../styling/SignUp.css'
 
 export default class SignUp extends React.Component {
@@ -22,7 +21,6 @@ export default class SignUp extends React.Component {
 		this.props.history.goBack()
 	}
 
-
 	onClickFunctionsSubmitSignUp = (event) => {
 		event.preventDefault()
 		fetch("http://localhost:3001/users", {
@@ -37,12 +35,12 @@ export default class SignUp extends React.Component {
 		})
 			.then(response => response.json())
 			.then(res_obj => {
+				console.log(res_obj)
 				if (res_obj.errors) {
 					this.setState({
 						errors: res_obj.errors
 					})
 				} else {
-					// this.props.displayItems()
 					this.props.history.push('/marketplace')
 					this.props.setToken(res_obj)
 				}
@@ -50,7 +48,6 @@ export default class SignUp extends React.Component {
 	}
 
 	render() {
-
 		return (
 			<div className="signup_main">
 				<ul>
@@ -79,7 +76,5 @@ export default class SignUp extends React.Component {
 				</div>
 			</div>
 		)
-
 	}
-
 }

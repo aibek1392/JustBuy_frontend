@@ -11,10 +11,12 @@ export default class CartCard extends React.Component {
     componentDidMount() {
         fetch(`http://localhost:3001/cart_items/${this.props.item.id}`)
             .then(res => res.json())
-            .then(res_obj =>
+            .then(res_obj => {
+
                 this.setState({
-                    cart_quantity: res_obj.cart_quantity
+                    cart_quantity: res_obj.data.attributes.cart_quantity
                 })
+            }
             )
 
     }
@@ -33,29 +35,23 @@ export default class CartCard extends React.Component {
 
     onClickFunctionsRemoveQuantity = () => {
         let quantity = this.state.cart_quantity
-
-        this.setState({
-            cart_quantity: quantity -= 1
-        })
+        if (quantity > 1) {
+            this.setState({
+                cart_quantity: quantity -= 1
+            })
+        }
     }
 
     onClickFunctionsUpdateQuantity = () => {
-        // if (this.state.cart_quantity === 0) {}
         axios.patch(`http://localhost:3001/cart_items/${this.props.item.id}`, {
             cart_quantity: this.state.cart_quantity
 
         })
     }
 
-    render() {
-        // console.log(this.props.item.attributes.item.name)
-        //    const name  = this.state.cart.map(cart => {
-        //      return  <li>{cart.attributes.item.name}</li> 
-        //    })
-        // console.log(this.state.cart)
-        // const itemCard = this.state
-        const cartItem = this.props.item.attributes.item
 
+    render() {
+        const cartItem = this.props.item.attributes.item
         return (
             <div className="cart_card">
                 <div className="item_name_picture_price">

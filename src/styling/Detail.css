@@ -31,11 +31,11 @@
 
 
 .image-card {
-    box-shadow: -2rem 0 3rem rgb(18, 18, 19);
+    box-shadow: -2rem 0 3rem rgb(182, 183, 187);
     width: 65vh;
     height: 60%;
     position: relative;
-    /* margin-right: 60%; */
+    margin-right: 60%;
     padding: 10px; 
     border-radius: 10%;
     margin-top: 15px;

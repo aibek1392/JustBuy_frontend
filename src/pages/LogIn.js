@@ -1,5 +1,4 @@
 import React from 'react'
-
 import '../styling/Login.css'
 
 export default class LogIn extends React.Component {
@@ -19,8 +18,6 @@ export default class LogIn extends React.Component {
 
   onSubmitFunctions = (event) => {
     this.logInSubmitted(event)
-    // this.props.updateCart()
-    // this.props.displayItems()
   }
 
 	onClickFunctionsSignUp = (event) => {
@@ -42,17 +39,14 @@ export default class LogIn extends React.Component {
     })
     .then(response => response.json())
     .then(res_obj => {
-      console.log(res_obj)
       if (res_obj.errors) {
         this.props.history.push('/')
         this.setState({
           errors: res_obj.errors,
           username: "",
           password: ""
-
         })
       } else {
-        console.log(res_obj)
         this.props.setToken(res_obj)
         this.props.getUser(res_obj)
         this.props.history.push('/marketplace')

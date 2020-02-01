@@ -1,17 +1,17 @@
 .login_wrapper {
-  text-align: center;
-	width: 30%;
- margin: auto;
- margin-top: 8%;
+  	text-align: center;
+	width: 25%;
+ 	margin: auto;
+ 	margin-top: 10%;
 	padding: 5px;
-	background-color: #f3f8fa41;
+	background-color: #111111b4;
 	border-radius: 10%;
-	border: 1px solid rgb(250, 245, 245);
-	
+	border: 1px solid rgba(234, 239, 241, 0.616);
 }
 
 .login_wrapper h2 {
-	color: rgb(245, 244, 244);
+	margin-top: 5%;
+	color: rgb(250, 248, 248);
 }
 
 .login_wrapper label {
@@ -24,22 +24,26 @@
   margin-right: auto;
   margin-top: 10px;
   margin-bottom: 5px;
-  background-color: rgba(247, 253, 253, 0.548);
+  background-color: rgba(247, 253, 253, 0.897);
 }
+
+.login_wrapper label {
+	color: rgb(253, 247, 247);
+}
+
 
 .login_button {
 	border: none;
-  	background-image: radial-gradient(rgb(69, 231, 5),  rgb(225, 225, 225, 1) );
+	background-image: radial-gradient(rgb(69, 231, 5),  rgb(225, 225, 225, 1) );
 	color: #000;
 	text-align: center;
 	text-decoration: none;
 	font-size: 1rem;
 	border-radius: 5px;
-	  margin-left: auto;
-	  margin-right: auto;
-	  margin-top: 5px;
-	  margin-bottom: 5px;
-	/* margin-left:0.25rem; margin-right:0.25rem; margin-top:0.25rem; margin-bottom:0.25rem; */
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 5px;
+	margin-bottom: 5px;
 	padding-left:0.25rem; padding-right:0.25rem; padding-top:0.25rem; padding-bottom:0.25rem;
 	box-shadow: 0 0 2.5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25);
 }
@@ -52,12 +56,11 @@
 	text-decoration: none;
 	font-size: 1rem;
 	border-radius: 25px;
-	  margin-left: auto;
-	  margin-right: auto;
-	  margin-top: 5px;
-	  margin-bottom: 5px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 5px;
+	margin-bottom: 5px;
 	padding-left:0.25rem; padding-right:0.25rem; padding-top:0.25rem; padding-bottom:0.25rem;
-
 	transition-property: cursor, color, background, box-shadow, border-radius;
 	transition-duration: .25s, .25s;
 	transition-timing-function: ease-in-out;
@@ -68,23 +71,18 @@
 	-webkit-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25);
 }
 
-/* .login_wrapper button {
-	margin: auto;
-} */
-
-
 .main_wrapper {
 	width: 100vw;
 	height: 100vh;
-	background-image: url('https://ak0.picdn.net/shutterstock/videos/28164670/thumb/1.jpg');
+	background-image: url('https://images.pexels.com/photos/325153/pexels-photo-325153.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
 	background-size: cover;
 	background-position:  center;
 	background-repeat: no-repeat;
 	overflow: hidden;
-	text-align: center;hadow: 0 0 5px 0 rgba(5, 236, 24, 0.25), 0 0 5px 0 rgba(6, 240, 57, 0.25), 0 0 5px 0 rgba(233, 39, 5, 0.25);
+	text-align: center;shadow: 0 0 5px 0 rgba(5, 236, 24, 0.25), 0 0 5px 0 rgba(6, 240, 57, 0.25), 0 0 5px 0 rgba(233, 39, 5, 0.25);
   }
 
-  .sign_button {
+.sign_button {
 	border: none;
   	background-image: radial-gradient(rgb(240, 8, 8),  rgb(225, 225, 225, 1) );
 	color: #000;
@@ -92,11 +90,10 @@
 	text-decoration: none;
 	font-size: 1rem;
 	border-radius: 5px;
-	  margin-left: auto;
-	  margin-right: auto;
-	  margin-top: 5px;
-	  margin-bottom: 5px;
-	/* margin-left:0.25rem; margin-right:0.25rem; margin-top:0.25rem; margin-bottom:0.25rem; */
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 5px;
+	margin-bottom: 5px;
 	padding-left:0.25rem; padding-right:0.25rem; padding-top:0.25rem; padding-bottom:0.25rem;
 	box-shadow: 0 0 2.5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25), 0 0 5px 0 rgba(0, 0, 0, 0.25);
 }
@@ -109,12 +106,11 @@
 	text-decoration: none;
 	font-size: 1rem;
 	border-radius: 25px;
-	  margin-left: auto;
-	  margin-right: auto;
-	  margin-top: 5px;
-	  margin-bottom: 5px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 5px;
+	margin-bottom: 5px;
 	padding-left:0.25rem; padding-right:0.25rem; padding-top:0.25rem; padding-bottom:0.25rem;
-
 	transition-property: cursor, color, background, box-shadow, border-radius;
 	transition-duration: .25s, .25s;
 	transition-timing-function: ease-in-out;

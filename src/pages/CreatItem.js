@@ -1,13 +1,8 @@
 import React, { Component } from 'react'
 import '../styling/ItemCard.css'
-// import '../Styling/Header.css'
-// import '../App.css'
- 
-// import { Redirect} from 'react-router-dom'
-// import { Button, Form, InputGroup, FormControl, Col } from 'react-bootstrap'
 import { Input, Segment, Form } from 'semantic-ui-react'
-export default class CreatItem extends Component {
 
+export default class CreatItem extends Component {
 
     state = {
         img_url: '',
@@ -19,11 +14,9 @@ export default class CreatItem extends Component {
         information: ''
     }
 
-
     onChange = (e) => {
         this.setState({ [e.target.name]: e.target.value })
     }
-
 
     goBack = (e) => {
         e.preventDefault()
@@ -32,17 +25,9 @@ export default class CreatItem extends Component {
 
     onSubmit = (e) => {
         e.preventDefault()
-        // let arrayItem = []
-        // if(!arrayItem.includes(this.state)){
-        //     arrayItem.push(this.state)
-            this.props.addItem(this.state)
-        // }
+        this.props.addItem(this.state)
         this.props.history.push('/marketplace')
-       
     }
-
-
-
 
     render() {
         return (
@@ -63,9 +48,7 @@ export default class CreatItem extends Component {
                             </button>
 
                             <Form s onSubmit={this.onSubmit}  >
-                                {/* <h2 style={{ color: "white", fontWeight: "bold" }}>Let's add an Item </h2> */}
                                 <h2 style={{ marginLeft: "24%", backgroundColor: "#F5F5F5", width: '50%', fontWeight: "bold" }} className="ui block header">Let's add an Item. </h2>
-
                                 <Form.Group widths='equal' style={{ display: "flex", flexDirection: "column" }}>
                                     <Input
                                         required
@@ -99,7 +82,6 @@ export default class CreatItem extends Component {
                                         actionPosition='left'
                                         placeholder='...Iphone 11, Honda Accord, etc.'
                                     />
-
                                     <br />
                                     <Input
                                         required
@@ -117,9 +99,7 @@ export default class CreatItem extends Component {
                                         actionPosition='left'
                                         placeholder='phone number, email address'
                                     />
-
                                     <br />
-
                                     <Input
                                         required
                                         value={this.state.price}
@@ -135,7 +115,6 @@ export default class CreatItem extends Component {
                                         actionPosition='left'
                                         placeholder='...$$$'
                                     />
-
                                     <br />
                                     <Input
                                         required
@@ -169,36 +148,7 @@ export default class CreatItem extends Component {
                                         actionPosition='left'
                                         placeholder='...electronics, car , clothes etc.'
                                     />
-
                                     <br />
-                                    {/* <Input
-                                        required
-                                        value={this.state.quantity}
-                                        onChange={this.onChange}
-                                        name="quantity"
-                                        action={{
-                                            color: 'teal',
-                                            labelPosition: 'left',
-                                            margin: "10px",
-                                            icon: 'braille',
-                                            content: 'quantity',
-                                        }}
-                                        actionPosition='left'
-                                        placeholder='...enter quantity'
-                                    />
-
-                                    <br /> */}
-                                    {/* <Button
-                                        style={{
-                                            width: '20%', color: 'black',
-                                            textAlign: 'center',
-                                            marginLeft: "40%"
-                                        }}
-
-                                        value="Submit"
-                                        type="submit">
-                                        Submit
-                                     </Button> */}
                                     <div className="ui buttons" style={{ width: "1%", marginLeft: "35%" }}>
                                         <button className="ui button"
 
@@ -208,7 +158,7 @@ export default class CreatItem extends Component {
                                         <button className="ui positive button"
                                             value="Submit"
                                             type="submit"
-                                        >Submit</button> 
+                                        >Submit</button>
                                     </div>
                                 </Form.Group>
                             </Form>

@@ -14,7 +14,6 @@ export default class ItemsContainer extends React.Component {
     fetch("http://localhost:3001/items")
       .then(res => res.json())
       .then(res_obj => {
-        console.log(res_obj)
         const slicedData = res_obj.sort((a, b) => b.id - a.id);
         this.setState({
           items: slicedData,
@@ -36,9 +35,7 @@ export default class ItemsContainer extends React.Component {
       return this.state.items
     } else {
       return this.state.items.filter(item => item.category === this.state.showFilteredItems)
-
     }
-
   }
 
   handleChange = (event) => {
@@ -58,7 +55,6 @@ export default class ItemsContainer extends React.Component {
           addToCart={this.props.addToCart}
           showDetails={this.props.showDetails}
         />
-        {/* {(this.props.display === "Cart") ? (showCart) : (showItems)} */}
       </div>
     )
   }
