@@ -18,7 +18,6 @@ export default class CartCard extends React.Component {
                 })
             }
             )
-
     }
 
     onClickFunctionsRemoveFromCart = () => {

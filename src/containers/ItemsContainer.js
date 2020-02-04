@@ -1,6 +1,5 @@
 import React from 'react'
 import ItemList from './ItemList'
-import CartList from './CartList'
 
 export default class ItemsContainer extends React.Component {
 

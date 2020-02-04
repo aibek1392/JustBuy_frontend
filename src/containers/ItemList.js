@@ -40,7 +40,7 @@ export default class ItemList extends React.Component {
 				<div className="item_filters">
 					<div >
 						<Input size="mini" type="search" value={this.state.searchTerm} onChange={this.handleChange} placeholder="Search by name..." />
-						<button class="ui mini red icon button"><i aria-hidden="true" class="search icon "></i></button>
+						<button className="ui mini red icon button"><i aria-hidden="true" className="search icon "></i></button>
 					</div>
 					<label >
 						<strong>Filter</strong>

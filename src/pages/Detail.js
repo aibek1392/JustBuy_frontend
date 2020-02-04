@@ -1,5 +1,4 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom'
 import '../styling/Detail.css'
 import { Link } from 'react-router-dom'
 class Detail extends React.Component {
@@ -54,7 +53,7 @@ class Detail extends React.Component {
                 <React.Fragment>
                     <div className="left_div_container">
         <h2 style={{ paddingTop:"25px",marginLeft: "13%", backgroundColor: "#F5F5F5", width: '40%', fontWeight: "bold" }} className="ui block center header">{item.name}</h2>
-                        <img className="image-card " width="400px" src={item.img_url} />
+                        <img className="image-card" alt="" width="400px" src={item.img_url} />
                     </div>
                     <div className="right_div_container" >
                         <table class="ui definition table">
